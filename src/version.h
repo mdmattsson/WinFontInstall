@@ -10,8 +10,8 @@
 #endif   
 
 // Full version: MUST be in the form of major,minor,revision,build  
-#define WINFONTINSTALLER_VERSION_FULL 0,0,0,0  
+#define WINFONTINSTALLER_VERSION_FULL 1,0,0,0  
 // String version: May be any suitable string  
-#define WINFONTINSTALLER_VERSION_STR "0.0.0.0"  
+#define WINFONTINSTALLER_VERSION_STR "1.0.0.0"  
 // PE version: MUST be in the form of major.minor  
-#pragma comment(linker, "/version:0.0")  
+#pragma comment(linker, "/version:1.0")  
