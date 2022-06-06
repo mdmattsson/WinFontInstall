@@ -11,12 +11,8 @@
 #define MY_VS_FF_DEBUG 0x0L
 #endif
 
-#ifdef _USER_PRIV_FLAG
-#define MY_ORIG_FILENAME "WinFontInstallUser.exe"
-#else
-#define MY_ORIG_FILENAME "WinFontInstall.exe"
-#endif
 
+#define MY_ORIG_FILENAME "WinFontInstall.exe"
 
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
@@ -44,4 +40,3 @@ VS_VERSION_INFO     VERSIONINFO
 	}
 }
 
-IDR_RT_MANIFEST         RT_MANIFEST             "WinFontInstall.manifest"

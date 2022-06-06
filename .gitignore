@@ -1,3 +1,6 @@
 src/.vs/
 releases/
 src/build/
+build/build64/
+build/build32/
+releases/

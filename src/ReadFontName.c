@@ -9,7 +9,7 @@
 #include "ReadFontName.h"
 #include "ReadFontNameInternal.h"
 
-FONTTYPE RFNAPI ReadFontName( PCTSTR pszFontPath, PTSTR pszFontName )
+FI_FONTTYPE RFNAPI ReadFontName( PCTSTR pszFontPath, PTSTR pszFontName )
 {
 	PCTSTR pszFontExt = pszFontPath + SSLen(pszFontPath) - 4;
 
@@ -32,7 +32,7 @@ FONTTYPE RFNAPI ReadFontName( PCTSTR pszFontPath, PTSTR pszFontName )
 	return(TYPE_NULL);
 }
 
-FONTTYPE RFNAPI ReadFontNameFON( PCTSTR pszFontPath, PTSTR pszFontName )
+FI_FONTTYPE RFNAPI ReadFontNameFON( PCTSTR pszFontPath, PTSTR pszFontName )
 {
 	HANDLE hFile;
 	IMAGE_DOS_HEADER doshdr;
@@ -75,10 +75,10 @@ FONTTYPE RFNAPI ReadFontNameFON( PCTSTR pszFontPath, PTSTR pszFontName )
 	return((*pszFontNameA) ? TYPE_FON : TYPE_NULL);
 }
 
-FONTTYPE RFNAPI ReadFontNameTTF( PCTSTR pszFontPath, PTSTR pszFontName )
+FI_FONTTYPE RFNAPI ReadFontNameTTF( PCTSTR pszFontPath, PTSTR pszFontName )
 {
 	HANDLE             hFile;
-	FONTTYPE           ftResult = TYPE_TTF;
+	FI_FONTTYPE           ftResult = TYPE_TTF;
 	UINT8              i, j;
 	UINT16             cNames;
 	UINT16             cTables;

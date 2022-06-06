@@ -30,7 +30,7 @@ typedef enum {
 	TYPE_FON,
 	TYPE_TTF,
 	TYPE_OTF
-} FONTTYPE, *PFONTTYPE;
+} FI_FONTTYPE;
 
 /**
  * ReadFontName
@@ -40,9 +40,9 @@ typedef enum {
 
 #define RFNAPI __fastcall
 
-FONTTYPE RFNAPI ReadFontName   ( PCTSTR pszFontPath, PTSTR pszFontName );
-FONTTYPE RFNAPI ReadFontNameFON( PCTSTR pszFontPath, PTSTR pszFontName );
-FONTTYPE RFNAPI ReadFontNameTTF( PCTSTR pszFontPath, PTSTR pszFontName );
+FI_FONTTYPE RFNAPI ReadFontName   ( PCTSTR pszFontPath, PTSTR pszFontName );
+FI_FONTTYPE RFNAPI ReadFontNameFON( PCTSTR pszFontPath, PTSTR pszFontName );
+FI_FONTTYPE RFNAPI ReadFontNameTTF( PCTSTR pszFontPath, PTSTR pszFontName );
 
 #ifdef __cplusplus
 }
