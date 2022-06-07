@@ -1,0 +1,50 @@
+name: WinFontInstall
+
+on: [push, pull_request]
+
+jobs:
+  Build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {
+            name: "Windows/Static/X86/Release",
+            os: windows-2022,
+            config: Release,
+            args: -G "Visual Studio 17 2022" -A Win32,
+          }
+          - {
+            name: "Windows/Static/X64/Release",
+            os: windows-2022,
+            config: Release,
+            args: -G "Visual Studio 16 2022" -A x64,
+          }
+          - {
+            name: "Ubuntu/18.04/Static/X64/Release",
+            os: ubuntu-18.04,
+            config: Release,
+            cmake_extra_args: "-DCMAKE_C_COMPILER=/usr/bin/gcc-10 -DCMAKE_CXX_COMPILER=/usr/bin/g++-10",
+          }
+          - {
+            name: "MacOSX/Static/X64/Release",
+            os: macos-10.15,
+            config: Release,
+            args: "",
+          }
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create Work Dir
+        run: mkdir build
+      - name: Configure
+        working-directory: ./build
+        run: |
+          cmake .. ${{ matrix.config.cmake_extra_args }} -DCMAKE_BUILD_TYPE=${{ matrix.config.config }}
+      - name: Build
+        working-directory: ./build
+        run: cmake --build . -j --config ${{ matrix.config.config }}
+      - name: Test
+        working-directory: ./build
+        run: ctest -j -C ${{ matrix.config.config }}
