@@ -7,6 +7,10 @@ Windows commandline utility that will install fonts.
  Find the latest release here: https://github.com/mdmattsson/WinFontInstall/releases/latest
  
  
+ :warning: **Warning:** Do not push the big red button.  
+ 
+ 
+  
  **Usage:**                                                        
    WinFontInstaller [options] [-f] <fontpath>                 
                                                               
