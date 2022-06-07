@@ -89,6 +89,7 @@ if not "%build_type%"=="build" (
  git add ver.txt
  git add ../src/version.h
  git commit -m "prepare for v%Major%.%Minor%.%Patch% release"
+ git push
  git tag v%Major%.%Minor%.%Patch%
  git push --tags
 )

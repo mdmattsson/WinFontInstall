@@ -153,7 +153,7 @@ VOID WINAPI PrintHelp()
     printf("**************************************************************\n");
     printf("* WinFontInstaller v1.0.1                                    *\n");
     printf("*                                                            *\n");
-    printf("* Michael Mattsson (mats@ymail.com                           *\n");
+    printf("* Michael Mattsson (mats@ymail.com)                          *\n");
     printf("* https://github.com/mdmattsson/WinFontInstall               *\n");
     printf("*                                                            *\n");
     printf("* usage                                                      *\n");
@@ -201,7 +201,19 @@ UINT WINAPI ParseCommandline()
         }
         else if ((lstrcmpi(argv[i], TEXT("/folder")) == 0) || (lstrcmpi(argv[i], TEXT("--folder")) == 0) || (lstrcmpi(argv[i], TEXT("/f")) == 0) || (lstrcmpi(argv[i], TEXT("-f")) == 0))
         {
-            SSCpy(szSourceFontsRoot, argv[i]);
+            if (i + 1 <= argc) {
+                SSCpy(szSourceFontsRoot, argv[i++]);
+            }
+            else {
+                printf("Running in default Admin Mode without eleveated permissions.   Run as Admin, or use parameter --user to install fonts for user only.\n");
+                PrintHelp();
+                return 0;
+            }
+        }
+        else if ((lstrcmpi(argv[i], TEXT("/help")) == 0) || (lstrcmpi(argv[i], TEXT("--help")) == 0) || (lstrcmpi(argv[i], TEXT("/h")) == 0) || (lstrcmpi(argv[i], TEXT("-h")) == 0))
+        {
+            PrintHelp();
+            return 0;
         }
         else
         {
