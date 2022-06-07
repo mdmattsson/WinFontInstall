@@ -39,12 +39,13 @@ If you...
 	the C:\Windows\Fonts directory (this step will be skipped for .fon fonts if
 	WinFontInstall cannot determine which fonts should have "hidden" registrations).
 
-WinFontInstall comes in 2 install modes
-  * **WinFontInstall /all**  requires admin privileges and installs the font(s)
-	to the main Windows Font folder for all users (C:\Windows\Fonts)
-  * **WinFontInstall /user** does NOT require admin privileges and installed the font(s)
-	will be for the current user only (C:\Users\<username>\AppData\Local\Microsoft\Windows\Fonts).  
-	This is handy when running the application from a login script (I use it in my Windows git bashrc file)
+WinFontInstall makes 2 install modes available:  
+	
+**WinFontInstall /all**  
+	requires admin privileges and installs the font(s) to the main Windows Font folder for all users (C:\Windows\Fonts)  
+	
+**WinFontInstall /user**  
+	does NOT require admin privileges and installed the font(s) will be for the current user only (C:\Users\<username>\AppData\Local\Microsoft\Windows\Fonts).  This is handy when running the application from a login script (I use it in my Windows git bashrc file to automatically install nerdfonts.)  
 
 
 
