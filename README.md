@@ -1,4 +1,4 @@
-# WinFontInstaller v1.0.1                                      
+# WinFontInstaller    
 Windows commandline utility that will install fonts.  
                                                               
  Michael Mattsson (mats@ymail.com)                             
