@@ -202,7 +202,7 @@ UINT WINAPI ParseCommandline()
         else if ((lstrcmpi(argv[i], TEXT("/folder")) == 0) || (lstrcmpi(argv[i], TEXT("--folder")) == 0) || (lstrcmpi(argv[i], TEXT("/f")) == 0) || (lstrcmpi(argv[i], TEXT("-f")) == 0))
         {
             if (i + 1 <= argc) {
-                SSCpy(szSourceFontsRoot, argv[i++]);
+                SSCpy(szSourceFontsRoot, argv[++i]);
             }
             else {
                 printf("Running in default Admin Mode without eleveated permissions.   Run as Admin, or use parameter --user to install fonts for user only.\n");
@@ -230,7 +230,18 @@ UINT WINAPI ParseCommandline()
     if (SSLen(szSourceFontsRoot) == 0) {
         SSCpy(szSourceFontsRoot, TEXT("."));
     }
-    SSCpy(options.szFontsRoot, szSourceFontsRoot);
+
+    DWORD result = ExpandEnvironmentStrings(szSourceFontsRoot, options.szFontsRoot, sizeof(options.szFontsRoot) / sizeof(*options.szFontsRoot));
+    if (!result)
+    {
+        int lastError = GetLastError();
+        printf("Failed to expand environment strings in directory name. GetLastError=%d", 1, lastError);
+        return 1;
+    }
+    
+    
+    
+    //SSCpy(options.szFontsRoot, szSourceFontsRoot);
     SSCat(options.szFontsRoot, TEXT("\\"));
 
     if (options.mode == MODE_ADMIN && !IsElevated())
